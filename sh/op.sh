@@ -38,8 +38,10 @@ git clone -b master --depth 1 --single-branch https://github.com/sbwml/v2ray-geo
 
 
 ./scripts/feeds update -a
+rm -rf feeds/packages/lang/golang
 rm -rf feeds/packages/net/v2ray-geodata
 rm -rf feeds/packages/net/mosdns
+rm -rf feeds/kiddin9/{automount,ntfs3-mount}
 rm -rf feeds/luci/applications/luci-app-frpc
 rm -rf feeds/luci/applications/luci-app-alist
 rm -rf feeds/luci/applications/luci-app-dockerman
@@ -53,6 +55,8 @@ cp -rf emortal package
 cp -rf luci-base feeds/luci/modules
 cp -rf luci-mod-status feeds/luci/modules/
 cp -rf dnsmasq package/network/services/
+
+git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 
 curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
 
