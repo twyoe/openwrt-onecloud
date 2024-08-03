@@ -17,6 +17,10 @@ git clone -b master --depth 1 --single-branch https://github.com/sbwml/v2ray-geo
 ./scripts/feeds update -a
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/packages/net/v2ray-geodata
+rm -rf feeds/luci/applications/luci-app-frpc
+rm -rf feeds/luci/applications/luci-app-alist
+
+curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a

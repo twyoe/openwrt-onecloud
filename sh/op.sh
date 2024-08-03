@@ -20,6 +20,7 @@ function git_sparse_clone() {
 
 echo 'src-git dns https://github.com/sbwml/luci-app-mosdns' >>feeds.conf.default
 echo 'src-git xd https://github.com/shiyu1314/openwrt-packages' >>feeds.conf.default
+echo 'src-git kiddin9 https://github.com/kiddin9/openwrt-packages' >>feeds.conf.default
 
 git_sparse_clone $REPO_BRANCH https://github.com/immortalwrt/immortalwrt package/emortal
 git_sparse_clone $REPO_BRANCH https://github.com/immortalwrt/immortalwrt package/utils/mhz
@@ -39,6 +40,8 @@ git clone -b master --depth 1 --single-branch https://github.com/sbwml/v2ray-geo
 ./scripts/feeds update -a
 rm -rf feeds/packages/net/v2ray-geodata
 rm -rf feeds/packages/net/mosdns
+rm -rf feeds/luci/applications/luci-app-frpc
+rm -rf feeds/luci/applications/luci-app-alist
 rm -rf feeds/luci/applications/luci-app-dockerman
 rm -rf feeds/luci/modules/luci-base
 rm -rf feeds/luci/modules/luci-mod-status
@@ -50,6 +53,8 @@ cp -rf emortal package
 cp -rf luci-base feeds/luci/modules
 cp -rf luci-mod-status feeds/luci/modules/
 cp -rf dnsmasq package/network/services/
+
+curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
